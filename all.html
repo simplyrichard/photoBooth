@@ -28,14 +28,14 @@
 </head>
 <body>
   <?php
-  if (isset($_POST['capure']))
+  if (isset($_POST['capture']))
   {
   exec("sudo /var/www/capture.sh");
   }
   ?>
    
   <form method="post">
-    <button type="button" class="btn btn-large btn-block btn-success">TAKE PHOTO</button>
+    <button type="button" name="capture" class="btn btn-large btn-block btn-success">TAKE PHOTO</button>
   </form>
   <button id="loadAll" type="button" class="btn btn-large btn-block btn-success">Load All Images</button>
   <div class="container">
