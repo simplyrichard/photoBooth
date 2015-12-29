@@ -27,10 +27,23 @@
   <meta property="og:description" content="Project Discription"/> 
 </head>
 <body>
-<button id="loadAll" type="button" class="btn btn-large btn-block btn-success">Load All Images</button>
+
+  <?php
+  if (isset($_POST['capure']))
+  {
+  exec("sudo /var/www/capture.sh");
+  }
+  ?>
+   
+  <form method="post">
+    <button type="button" class="btn btn-large btn-block btn-success">TAKE PHOTO</button>
+  </form>
+  <button id="loadAll" type="button" class="btn btn-large btn-block btn-success">Load All Images</button>
   <div class="container">
     <div id="allImages" class="col-md-12"></div>
   </div>
+
+
 </body>
 <!-- Bootstrap core JavaScript
 ================================================== -->
