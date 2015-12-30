@@ -1,7 +1,8 @@
 #!/usr/bin/env python2.7  
 # tweetpic.py take a photo with the Pi camera and tweet it  
 # by Alex Eames http://raspi.tv/?p=5918  
-import tweepy  
+import tweepy
+import random  
 from subprocess import call  
 from datetime import datetime  
    
@@ -24,9 +25,11 @@ auth.set_access_token(access_token, access_token_secret)
    
 # Creation of the actual interface, using authentication  
 api = tweepy.API(auth)  
-  
+possibleTweets = ["PUSSY PATROL","HAMMOND MISSES YOU", "CHILDISH GAMBINO", "#JewFro", "DANK MEMES", "Wish u where here", "we MISS you", "#FillHerButt", "#NYE2KXVI", "A Dab'll do ya", "Stockwell Massif", "Straight outta Ktown", "Loose Fosters", "DJ Yodam, Minnie The Moocher", "#GirlsonFilm"] 
+tweetString = random.choice(possibleTweets)
+
 # Send the tweet with photo  
-photo_path = '/tempPic/mike.png'  
-status = 'Photo auto-tweet from Pi: ' #+ i.strftime('%Y/%m/%d %H:%M:%S')   
+photo_path = '/tempPic/mike.png' #Absolute path on device form root  
+status = tweetString+" #WhereRPhil NYE2015"   
 api.update_with_media(photo_path, status=status)  
 
