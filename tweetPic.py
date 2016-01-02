@@ -1,35 +1,32 @@
-#!/usr/bin/env python2.7  
-# tweetpic.py take a photo with the Pi camera and tweet it  
-# by Alex Eames http://raspi.tv/?p=5918  
+#!/usr/bin/env python2.7    
 import tweepy
 import random  
 from subprocess import call  
 from datetime import datetime  
    
-#i = datetime.now()               #take time and date for filename  
-#now = i.strftime('%Y%m%d-%H%M%S')  
-#photo_name = now + '.jpg'  
-# cmd = 'raspistill -t 500 -w 1024 -h 768 -o /home/pi/' + photo_name
-# FSWEBCAM command   
-#call ([cmd], shell=True)         #shoot the photo  
-  
 # Consumer keys and access tokens, used for OAuth  
-consumer_key = 'IeE7jBvb3wtFBThqzdrquEHjb'  
-consumer_secret = 'qcL3B3yel4FYgdtNNZpauWMeTn8U2Er1qqRfA2SE0PDxAB8hE3'  
-access_token = '394321578-ZobON1eD3zXUcNJjREnRTPUCCjfCXCHKPgVh1Q1V'  
-access_token_secret = 'Vcbg2eTaGqQ5tHda5Zhquxx3GbUZHyeGlnEcYe99EOX3v'  
+consumer_key = 'CONSUMER API KEY'  
+consumer_secret = 'CONSUMER_SECRET API KEY'  
+access_token = 'ACCESS_TOKEN API KEY'  
+access_token_secret = 'ACCESS_TOKEN API KEY'  
   
-# OAuth process, using the keys and tokens  
+# Auth with Twitter using Keys above  
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)  
 auth.set_access_token(access_token, access_token_secret)  
    
 # Creation of the actual interface, using authentication  
 api = tweepy.API(auth)  
-possibleTweets = ["PUSSY PATROL","HAMMOND MISSES YOU", "CHILDISH GAMBINO", "#JewFro", "DANK MEMES", "Wish u where here", "we MISS you", "#FillHerButt", "#NYE2KXVI", "A Dab'll do ya", "Stockwell Massif", "Straight outta Ktown", "Loose Fosters", "DJ Yodam, Minnie The Moocher", "#GirlsonFilm"] 
+possibleTweets = ["Possible Tweet 1", "Possible Tweet 2", "Possible Tweet 3"] 
 tweetString = random.choice(possibleTweets)
 
-# Send the tweet with photo  
-photo_path = '/tempPic/mike.png' #Absolute path on device form root  
-status = tweetString+" #WhereRPhil NYE2015"   
+# Add path to photo, this is an absolute path from the root of device, eg. /var/www/latestPhoto.png  
+photo_path = 'PATH TO PHOTO'
+
+#String you would to go along with tweet
+status = "@chris_vasey I am testing your python script"
+
+#Tweet Text with Photo and String Specified Above 
 api.update_with_media(photo_path, status=status)  
+
+
 
